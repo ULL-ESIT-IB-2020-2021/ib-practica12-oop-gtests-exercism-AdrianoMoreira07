@@ -38,6 +38,12 @@ class Fecha {
             std::to_string(anyo_));
   }
 
+  /*
+   * Asigna a un objeto Fecha los valores de una
+   * fecha en formato dd/mm/aaaa de tipo string
+   * @param this Al que se le asigna la fecha
+   * @param cadena De la que se extrae la fecha
+   */
   void operator=(const std::string& cadena);
 
   bool operator<(const Fecha& otra_fecha) const;

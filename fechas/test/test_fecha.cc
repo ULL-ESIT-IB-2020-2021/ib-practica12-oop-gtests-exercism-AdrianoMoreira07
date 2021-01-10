@@ -29,26 +29,30 @@ TEST(TestFecha, asigna_fecha_string) {
   EXPECT_EQ(fecha.VerFecha(), "10/12/2020");
 }
 
+TEST(TestFecha, comaracion_mayor) {
+  Fecha fecha1{20, 10, 2010};
+  Fecha fecha2{5, 4, 2000};
+  EXPECT_GT(fecha1, fecha2);
+  fecha1.CambiarAnyo(fecha2.VerAnyo());
+  EXPECT_GT(fecha1, fecha2);
+  fecha1.CambiarMes(fecha2.VerMes());
+  EXPECT_GT(fecha1, fecha2);
+}
+
 TEST(TestFecha, comaracion_menor) {
   Fecha fecha1{5, 4, 2000};
   Fecha fecha2{20, 10, 2010};
-  EXPECT_TRUE(fecha1 < fecha2);
-  EXPECT_FALSE(fecha2 < fecha1);
-
-}
-
-TEST(TestFecha, comaracion_mayor) {
-  Fecha fecha1{5, 4, 2000};
-  Fecha fecha2{20, 10, 2010};
-  EXPECT_FALSE(fecha1 > fecha2);
-  EXPECT_TRUE(fecha2 > fecha1);
+  EXPECT_LT(fecha1, fecha2);
+  fecha1.CambiarAnyo(fecha2.VerAnyo());
+  EXPECT_LT(fecha1, fecha2);
+  fecha1.CambiarMes(fecha2.VerMes());
+  EXPECT_LT(fecha1, fecha2);
 }
 
 TEST(TestFecha, comaracion_igual) {
   Fecha fecha1{5, 4, 2000};
-  Fecha fecha2{20, 10, 2010};
-  EXPECT_FALSE(fecha1 == fecha2);
-  EXPECT_FALSE(fecha2 == fecha1);
-  EXPECT_TRUE(fecha1 == fecha1);
-  EXPECT_TRUE(fecha2 == fecha2);
+  Fecha fecha2{5, 4, 2000};
+  EXPECT_EQ(fecha1, fecha2);
+  EXPECT_EQ(fecha1, fecha1);
+  EXPECT_EQ(fecha2, fecha2);
 }

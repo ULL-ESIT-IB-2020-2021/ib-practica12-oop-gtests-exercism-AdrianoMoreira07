@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Execute cmake",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-B${fileDirname}/../build/",
+        "${fileDirname}/.."
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+    },
+    {
+      "label": "Execute make",
+      "type": "shell",
+      "command": "make",
+      "args": ["-C", "${fileDirname}/../build/"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /bin/g++"
+    },
+    {
+      "label": "C/C++: g++ build active file",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Execute cmake","Execute make"]
+    },
+  ]
+}
